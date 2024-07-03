@@ -1,13 +1,37 @@
+@import "./app/config/normalize";
 @import "./app/config/styles.config";
 
 @import '@fontsource/plus-jakarta-sans/400.css';
 @import '@fontsource/plus-jakarta-sans/500.css';
 @import '@fontsource/plus-jakarta-sans/600.css';
 
+@import "./components/button/button";
+@import "./components/input/input";
+@import "./components/card/card";
+@import "./components/title/title";
+@import "./components/form/form";
+@import "./components/fieldset/fieldset";
+@import "./components/link/link";
+
+
+@import "./pages/login/login-page";
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 :root {
     font: $text-regular-m;
     color: $black-500-color;
     background-color: $black-700-color;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     color-scheme: light;
 
@@ -15,4 +39,9 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
 }
