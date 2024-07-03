@@ -1,0 +1,7 @@
+@import "../../app/config/styles.config";
+
+.card {
+    background-color: $black-700-color;
+    border-radius: $main-radius;
+    border: 1px solid $green-500-color;
+}
