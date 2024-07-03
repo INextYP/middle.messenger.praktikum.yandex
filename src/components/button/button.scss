@@ -1,0 +1,11 @@
+@import "../../app/config/styles.config";
+
+.button {
+    cursor: pointer;
+    background-color: $green-500-color;
+    color: $black-700-color;
+    font: $text-large-l;
+    padding: $main-spacing;
+    border-radius: $main-radius;
+    border: none;
+}
