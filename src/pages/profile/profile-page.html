@@ -1,0 +1,21 @@
+{{> panel }}
+{{#> card }}
+    {{#> form extraClass="form_place_profile"}}
+        {{> avatar alt="Аватар пользователя" src="https://i.pravatar.cc/100" }}
+        {{> title text="Имя" }}
+        {{#> fieldset }}
+            {{> input type="text" id="first_name" name="first_name" label="Имя" placeholder="Имя" }}
+            {{> input type="text" id="second_name" name="second_name" label="Фамилия" placeholder="Фамилию" }}
+            {{> input type="text" id="login" name="login" label="Логин" placeholder="Логин" }}
+            {{> input type="phone" id="phone" name="phone" label="Номер телефона" placeholder="+7 999 999 99 99" }}
+            {{> input type="password" id="chat_name" name="chat_name" label="Имя в чате" placeholder="Пароль" }}
+        {{/ fieldset }}
+        <div class="button-group button-group_place_left">
+            {{> link content="Изменить данные" }}
+            {{> divider }}
+            {{> link content="Изменить пароль" }}
+            {{> divider }}
+            {{> link content="Выйти" colorClass="link_color_red" }}
+        </div>
+    {{/ form }}
+{{/ card }}
