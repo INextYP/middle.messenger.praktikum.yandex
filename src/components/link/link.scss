@@ -5,4 +5,8 @@
     text-decoration: none;
     color: $green-500-color;
     font: $text-regular-m;
+
+    &_color_red {
+        color: $red-600-color;
+    }
 }
