@@ -5,9 +5,18 @@
     align-items: center;
     justify-content: space-between;
     padding: 32px;
+    min-width: 340px;
 }
 
 .form_place_login {
     min-height: 460px;
-    min-width: 340px;
+}
+
+.form_place_register {
+    min-height: 614px;
+}
+
+.form_place_profile {
+    min-height: 687px;
+    min-width: 542px;
 }

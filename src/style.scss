@@ -12,6 +12,9 @@
 @import "./components/form/form";
 @import "./components/fieldset/fieldset";
 @import "./components/link/link";
+@import "./components/divider/divider";
+@import "./components/avater/avatar";
+@import "./components/panel/panel";
 
 
 @import "./pages/login/login-page";
@@ -44,4 +47,9 @@
 #app {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 100vh;
+    width: 100vw;
 }
