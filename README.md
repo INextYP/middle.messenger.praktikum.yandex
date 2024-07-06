@@ -7,6 +7,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/6eb16035-15de-48f5-931f-4375f9ad918b/deploy-status)](https://app.netlify.com/sites/lambent-platypus-e784b9/deploys)
 
 ### [Prototype-link](https://www.figma.com/design/Otc0rGaveBSa6XSnfY6qSc/Chat?node-id=0-1&t=C74SNbeaU2JQ77zh-0)
+### [Netlify link](https://deploy--lambent-platypus-e784b9.netlify.app/)
 
 ## Installation
 
