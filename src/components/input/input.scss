@@ -9,6 +9,16 @@
 .input-label {
     font: $text-regular-m;
     padding-left: calc($main-spacing * 2);
+
+    &_type_secondary {
+        position: absolute;
+        top: calc($main-spacing / 2);
+        left: 0;
+
+        &::placeholder {
+            color: $black-100-color;
+        }
+    }
 }
 
 .input-field {
@@ -23,6 +33,10 @@
         box-shadow: $input-hover-shadow;
     };
 
+    &::placeholder, .input-label {
+        color: $black-300-color;
+    }
+
     &:focus-visible {
         outline: none;
         border: 1px solid $green-500-color;
@@ -30,6 +44,26 @@
 
     &:focus-visible:hover {
         box-shadow: $input-active-hover-shadow;
+    }
+
+    &_type_secondary {
+        border: none;
+        border-radius: 0;
+        border-bottom: 1px solid $black-500-color;
+        text-align: end;
+
+        &:read-only {
+            cursor: default;
+            user-select: none;
+        }
+
+        &:read-only:focus-visible {
+            border: 1px solid $black-500-color;
+        }
+
+        &:read-only:hover {
+            box-shadow: none;
+        }
     }
 
     &-error {
@@ -40,10 +74,6 @@
             box-shadow: $input-error-hover-shadow;
         }
     }
-}
-
-.input-field::placeholder, .input-label {
-    color: $black-300-color;
 }
 
 .input-error-text {

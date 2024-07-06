@@ -9,4 +9,9 @@
     &_color_red {
         color: $red-600-color;
     }
+
+    &_color_grey {
+        color: $black-300-color;
+        text-align: end;
+    }
 }
