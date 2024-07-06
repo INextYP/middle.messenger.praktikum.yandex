@@ -15,8 +15,13 @@
 @import "./components/divider/divider";
 @import "./components/avater/avatar";
 @import "./components/panel/panel";
+@import "./components/modal/modal";
+@import "./components/message/message";
+@import "./components/chat-panel/chat-panel";
+@import "./components/search-input/search-input";
+@import "./components/chat-window/chat-window";
 
-
+@import "./pages/chat/chat-page";
 @import "./pages/login/login-page";
 
 *,

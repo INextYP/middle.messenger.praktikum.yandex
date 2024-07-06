@@ -17,6 +17,18 @@ export const pageContext: Record<`${Routes}`, NonNullable<unknown>> = {
     [Routes.profile]: {
         to: Routes.chatPage,
     },
+    [Routes.editProfile]: {
+        to: Routes.chatPage,
+    },
+    [Routes.editPassword]: {
+        to: Routes.chatPage,
+    },
+    [Routes.page404]: {
+        to: Routes.chatPage,
+    },
+    [Routes.page500]: {
+        to: Routes.chatPage,
+    },
 } as const
 
 export const pageConfig: Record<`${Routes}`, string> = {
@@ -24,6 +36,10 @@ export const pageConfig: Record<`${Routes}`, string> = {
     [Routes.register]: '',
     [Routes.chatPage]: '',
     [Routes.profile]: '',
+    [Routes.editProfile]: '',
+    [Routes.editPassword]: '',
+    [Routes.page404]: '',
+    [Routes.page500]: '',
 }
 
 export const appContainer = document.querySelector<HTMLDivElement>(

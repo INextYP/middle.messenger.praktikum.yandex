@@ -16,7 +16,5 @@ export const buildTemplates = () => {
         const template = Handlebars.compile(pageComponent)(context)
 
         pageConfig[key] = template
-
-        console.log(pageConfig)
     }
 }
