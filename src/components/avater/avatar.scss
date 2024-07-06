@@ -9,23 +9,34 @@ $avatar-radius: 20px;
     box-shadow: $avatar-shadow;
     position: relative;
     cursor: pointer;
+
+    &_place_chat {
+        height: 47px;
+        width: 47px;
+        box-shadow: none;
+        grid-area: avatar;
+    }
 }
 
 .overlay {
     position: relative;
     z-index: 1;
     cursor: pointer;
-}
 
-.overlay:hover::before {
-    content: "";
-    background-color: $avatar-hover-color;
-    height: 100%;
-    width: 100%;
-    border-radius: $avatar-radius;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 2;
+    &:hover::before {
+        content: "";
+        background-color: $avatar-hover-color;
+        height: 100%;
+        width: 100%;
+        border-radius: $avatar-radius;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
+    }
+
+    &_place_chat {
+        display: none;
+    }
 }
