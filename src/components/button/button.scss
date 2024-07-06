@@ -8,4 +8,8 @@
     padding: $main-spacing;
     border-radius: $main-radius;
     border: none;
+
+    &_type_fullWidth {
+        width: 100%;
+    }
 }
