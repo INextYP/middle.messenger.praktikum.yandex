@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "yarn build && vite preview",
+    "start": "tsc && vite build --emptyOutDir && vite preview",
     "dev": "vite --open --port 3000",
     "build": "tsc && vite build --emptyOutDir",
     "preview": "vite preview",
