@@ -17,7 +17,10 @@ yarn
 ### Available scripts
 
 ```bash
+// Develop mode
 yarn dev
-yarn build
+
+// Production mode
+yarn start
 ```
 

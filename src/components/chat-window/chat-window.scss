@@ -31,7 +31,7 @@
 
 .chat-file-loader {
     cursor: pointer;
-    background: transparent url("../../assets/clip_icon.svg") no-repeat center center;
+    background: transparent url("/clip_icon.svg") no-repeat center center;
     border: none;
     width: 28px;
     height: 28px;
@@ -62,7 +62,7 @@
     border: none;
     width: 3px;
     height: 15px;
-    background: transparent url("../../assets/menu_icon.svg") no-repeat center center;
+    background: transparent url("/menu_icon.svg") no-repeat center center;
 }
 
 .chat-send-button {
@@ -71,5 +71,5 @@
     border: none;
     width: 28px;
     height: 28px;
-    background: $green-500-color url("../../assets/right-arrow.svg") no-repeat center center;
+    background: $green-500-color url("/right-arrow.svg") no-repeat center center;
 }
