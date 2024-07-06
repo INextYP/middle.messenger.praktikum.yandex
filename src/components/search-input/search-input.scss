@@ -1,0 +1,27 @@
+@import "../../app/config/styles.config";
+
+.search-input {
+    color: $black-200-color;
+    font: $text-regular-m;
+    border: 1px solid $black-500-color;
+    background-color: $black-600-color;
+    border-radius: $main-spacing;
+    padding: 4px 16px;
+    width: calc(100% - #{$main-spacing});
+    margin: 16px auto;
+    text-align: center;
+    position: relative;
+
+    &:hover {
+        box-shadow: $input-hover-shadow;
+    };
+
+    &::placeholder, {
+        color: $black-300-color;
+    }
+
+    &:focus-visible {
+        outline: none;
+        border: 1px solid $green-500-color;
+    }
+}

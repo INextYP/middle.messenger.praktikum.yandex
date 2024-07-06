@@ -1,0 +1,15 @@
+{{> panel }}
+{{#> card }}
+    {{#> form extraClass="form_place_profile"}}
+        {{> avatar alt="Аватар пользователя" src="https://i.pravatar.cc/100" }}
+        {{#> fieldset }}
+            {{> input type="text" variant="secondary" id="first_name" name="first_name" label="Имя" placeholder="Имя" }}
+            {{> input type="text" variant="secondary" id="second_name" name="second_name" label="Фамилия" placeholder="Фамилию" }}
+            {{> input type="text" variant="secondary" id="login" name="login" label="Логин" placeholder="Логин" }}
+            {{> input type="phone" variant="secondary" id="phone" name="phone" label="Номер телефона" placeholder="+7 999 999 99 99" }}
+        {{/ fieldset }}
+        <div class="button-group">
+            {{> button fullWidth="true" content="Сохранить" to="profile" }}
+        </div>
+    {{/ form }}
+{{/ card }}

@@ -1,0 +1,84 @@
+@import "../../app/config/styles.config";
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.input-label {
+    font: $text-regular-m;
+    padding-left: calc($main-spacing * 2);
+
+    &_type_secondary {
+        position: absolute;
+        top: calc($main-spacing / 2);
+        left: 0;
+
+        &::placeholder {
+            color: $black-100-color;
+        }
+    }
+}
+
+.input-field {
+    color: $black-200-color;
+    font: $text-regular-m;
+    border: 1px solid $black-500-color;
+    background-color: $black-600-color;
+    border-radius: $main-spacing;
+    padding: 4px 16px;
+
+    &:hover {
+        box-shadow: $input-hover-shadow;
+    };
+
+    &::placeholder, .input-label {
+        color: $black-300-color;
+    }
+
+    &:focus-visible {
+        outline: none;
+        border: 1px solid $green-500-color;
+    }
+
+    &:focus-visible:hover {
+        box-shadow: $input-active-hover-shadow;
+    }
+
+    &_type_secondary {
+        border: none;
+        border-radius: 0;
+        border-bottom: 1px solid $black-500-color;
+        text-align: end;
+
+        &:read-only {
+            cursor: default;
+            user-select: none;
+        }
+
+        &:read-only:focus-visible {
+            border: 1px solid $black-500-color;
+        }
+
+        &:read-only:hover {
+            box-shadow: none;
+        }
+    }
+
+    &-error {
+        border-color: $red-600-color;
+        color: $red-600-color;
+
+        &:hover {
+            box-shadow: $input-error-hover-shadow;
+        }
+    }
+}
+
+.input-error-text {
+    margin: 0;
+    font: $text-regular-m;
+    color: $red-600-color;
+    padding-left: calc($main-spacing * 2);
+}

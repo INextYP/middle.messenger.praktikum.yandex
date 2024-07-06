@@ -1,0 +1,17 @@
+{{#> card }}
+    {{#> form extraClass="form_place_register"}}
+        {{> title text="Регистрация" }}
+        {{#> fieldset }}
+            {{> input type="text" id="first_name" name="first_name" label="Имя" placeholder="Введите имя" }}
+            {{> input type="text" id="second_name" name="second_name" label="Фамилия" placeholder="Введите фамилию" }}
+            {{> input type="text" id="login" name="login" label="Логин" placeholder="Введите логин" }}
+            {{> input type="phone" id="phone" name="phone" label="Номер телефона" placeholder="+7 999 999 99 99" }}
+            {{> input type="password" id="password" name="password" label="Пароль" placeholder="Введите пароль" }}
+            {{> input type="password" id="password_check" name="password_check" label="Пароль ещё раз" placeholder="Повторите пароль" }}
+        {{/ fieldset }}
+        <div class="button-group">
+            {{> button content="Зарегистрироваться" }}
+            {{> link content="Войти" }}
+        </div>
+    {{/ form }}
+{{/ card }}

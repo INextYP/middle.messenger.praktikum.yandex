@@ -1,0 +1,68 @@
+@import "../../app/config/styles.config";
+
+.message {
+    font: $text-medium-l;
+    display: grid;
+    grid-template-columns: 47px 1fr 80px;
+    grid-auto-rows: 1fr 1fr;
+    gap: $main-spacing;
+    padding: $main-spacing;
+    grid-template-areas: "avatar name date"
+                         "avatar message notification";
+    border-top: 1px solid $white-color;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+
+    &:hover:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: $gradient-blue-green-color;
+        opacity: .3;
+        z-index: 3;
+    }
+
+    &-user-name {
+        grid-area: name;
+        color: $black-100-color;
+        font: $text-large-s;
+    }
+
+    &-text {
+        grid-area: message;
+        color: $black-300-color;
+    }
+
+    &-date {
+        grid-area: date;
+        color: $black-300-color;
+        justify-self: end;
+    }
+
+    &-notification-count {
+        background-color: $green-500-color;
+        border: none;
+        grid-area: notification;
+        height: 16px;
+        width: 16px;
+        border-radius: 50%;
+        padding: 0;
+        justify-self: end;
+    }
+
+    &_type_main {
+        background: $gradient-blue-green-color;
+
+        & > .message-user-name {
+            color: $black-800-color;
+        }
+    }
+}
+
+.message-user-name, .message-text, .message-date {
+    margin: 0;
+}

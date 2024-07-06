@@ -1,0 +1,8 @@
+export { login } from './login'
+export { register } from './register'
+export { chatPage } from './chat'
+export { profile } from './profile'
+export { editProfile } from './edit-profile'
+export { editPassword } from './edit-password'
+export { page404 } from './page-404'
+export { page500 } from './page-500'

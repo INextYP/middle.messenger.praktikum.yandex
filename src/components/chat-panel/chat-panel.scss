@@ -1,0 +1,10 @@
+@import "../../app/config/styles.config";
+
+.chat-panel {
+    height: 100vh;
+    width: 306px;
+    background-color: $black-800-color;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 8px 0 8px;
+}
