@@ -1,3 +1,15 @@
-{{#> card }}
-    {{> link content="Профиль" }}
-{{/ card }}
+<main class="chat-section">
+    {{#> chatPanel }}
+        {{> link colorClass="link_color_grey" content="Профиль >" }}
+        {{> searchInput type="search" name="search" placeholder="Поиск" }}
+
+        {{> message avatar="<img src='https://i.pravatar.cc/100' class='avatar avatar_place_chat' alt='Аватар пользователя Вася' />" name="Вася" message="Рандомное сообщение" date="1 апреля 2024" notificationCount="2" }}
+        {{> message mainMessage="true" avatar="<img src='https://i.pravatar.cc/100' class='avatar avatar_place_chat' alt='Аватар пользователя Вася' />" name="Вася" message="Рандомное сообщение" }}
+        {{> message avatar="<img src='https://i.pravatar.cc/100' class='avatar avatar_place_chat' alt='Аватар пользователя Вася' />" name="Вася" message="Рандомное сообщение" date="1 апреля 2024" notificationCount="2" }}
+        {{> message avatar="<img src='https://i.pravatar.cc/100' class='avatar avatar_place_chat' alt='Аватар пользователя Вася' />" name="Вася" message="Рандомное сообщение" date="1 апреля 2024" notificationCount="2" }}
+        {{> message avatar="<img src='https://i.pravatar.cc/100' class='avatar avatar_place_chat' alt='Аватар пользователя Вася' />" name="Вася" message="Рандомное сообщение" date="1 апреля 2024" }}
+    {{/ chatPanel }}
+    {{#> chatWindow avatar="<img src='https://i.pravatar.cc/100' class='avatar avatar_place_chat' alt='Аватар пользователя Вася' />" name="Андрей" }}
+        <div>Сообщения...</div>
+    {{/ chatWindow }}
+</main>
