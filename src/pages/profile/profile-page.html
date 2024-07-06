@@ -4,18 +4,19 @@
         {{> avatar alt="Аватар пользователя" src="https://i.pravatar.cc/100" }}
         {{> title text="Имя" }}
         {{#> fieldset }}
-            {{> input type="text" id="first_name" name="first_name" label="Имя" placeholder="Имя" }}
-            {{> input type="text" id="second_name" name="second_name" label="Фамилия" placeholder="Фамилию" }}
-            {{> input type="text" id="login" name="login" label="Логин" placeholder="Логин" }}
-            {{> input type="phone" id="phone" name="phone" label="Номер телефона" placeholder="+7 999 999 99 99" }}
-            {{> input type="password" id="chat_name" name="chat_name" label="Имя в чате" placeholder="Пароль" }}
+            {{> input type="text" variant="secondary" id="first_name" name="first_name" label="Имя" placeholder="Имя" readonly="true" }}
+            {{> input type="text" variant="secondary" id="second_name" name="second_name" label="Фамилия" placeholder="Фамилию" readonly="true" }}
+            {{> input type="text" variant="secondary" id="login" name="login" label="Логин" placeholder="Логин" readonly="true" }}
+            {{> input type="phone" variant="secondary" id="phone" name="phone" label="Номер телефона" placeholder="+7 999 999 99 99" readonly="true" }}
+            {{> input type="password" variant="secondary" id="chat_name" name="chat_name" label="Имя в чате" placeholder="Пароль" readonly="true" }}
         {{/ fieldset }}
         <div class="button-group button-group_place_left">
-            {{> link content="Изменить данные" }}
+            {{> link href="editProfile" content="Изменить данные" }}
             {{> divider }}
-            {{> link content="Изменить пароль" }}
+            {{> link href="editPassword" content="Изменить пароль" }}
             {{> divider }}
-            {{> link content="Выйти" colorClass="link_color_red" }}
+            {{> link href="login" content="Выйти" colorClass="link_color_red" }}
         </div>
     {{/ form }}
 {{/ card }}
+{{#> modal title="Загрузите файл" }}{{/ modal }}
