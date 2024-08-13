@@ -1,28 +1,32 @@
-@import "./app/config/normalize";
-@import "./app/config/styles.config";
+@import './app/config/normalize';
+@import './app/config/styles.config';
 
 @import '@fontsource/plus-jakarta-sans/400.css';
 @import '@fontsource/plus-jakarta-sans/500.css';
 @import '@fontsource/plus-jakarta-sans/600.css';
 
-@import "./components/button/button";
-@import "./components/input/input";
-@import "./components/card/card";
-@import "./components/title/title";
-@import "./components/form/form";
-@import "./components/fieldset/fieldset";
-@import "./components/link/link";
-@import "./components/divider/divider";
-@import "./components/avater/avatar";
-@import "./components/panel/panel";
-@import "./components/modal/modal";
-@import "./components/message/message";
-@import "./components/chat-panel/chat-panel";
-@import "./components/search-input/search-input";
-@import "./components/chat-window/chat-window";
+@import './components/button/button';
+@import './components/input/input';
+@import './components/title/title';
+@import './components/link/link';
+@import './components/avatar/avatar';
+@import './components/modal/modal';
+@import './components/message/message';
+@import './components/search-input/search-input';
+@import './components/error-text/error-text';
+@import './components/mesage-input/message-input';
 
-@import "./pages/chat/chat-page";
-@import "./pages/login/login-page";
+@import './partials/form/form';
+@import './partials/card/card';
+@import './partials/fieldset/fieldset';
+@import './partials/divider/divider';
+@import './partials/panel/panel';
+@import './partials/chat-panel/chat-panel';
+@import './partials/chat-messages/chat-messages';
+@import './partials/modal-body/modal-body';
+
+@import './pages/chat/chat-page';
+@import './pages/login/login-page';
 
 *,
 *::before,
