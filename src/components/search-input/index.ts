@@ -1,1 +1,14 @@
-export { default as searchInput } from './search-input.html?raw'
+import Block from '../../services/block'
+import { SearchInputProps } from './types'
+
+import searchInputTemplate from './search-input.html?raw'
+
+export class SearchInput extends Block<SearchInputProps> {
+    constructor(props: SearchInputProps) {
+        super(props)
+    }
+
+    render() {
+        return this.compile(searchInputTemplate, this.props)
+    }
+}
