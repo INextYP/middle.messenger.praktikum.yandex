@@ -1,22 +1,24 @@
-{{> panel }}
-{{#> card }}
-    {{#> form extraClass="form_place_profile"}}
-        {{> avatar alt="Аватар пользователя" src="https://i.pravatar.cc/100" }}
-        {{> title text="Имя" }}
-        {{#> fieldset }}
-            {{> input type="text" variant="secondary" id="first_name" name="first_name" label="Имя" placeholder="Имя" readonly="true" }}
-            {{> input type="text" variant="secondary" id="second_name" name="second_name" label="Фамилия" placeholder="Фамилию" readonly="true" }}
-            {{> input type="text" variant="secondary" id="login" name="login" label="Логин" placeholder="Логин" readonly="true" }}
-            {{> input type="phone" variant="secondary" id="phone" name="phone" label="Номер телефона" placeholder="+7 999 999 99 99" readonly="true" }}
-            {{> input type="password" variant="secondary" id="chat_name" name="chat_name" label="Имя в чате" placeholder="Пароль" readonly="true" }}
-        {{/ fieldset }}
-        <div class="button-group button-group_place_left">
-            {{> link href="editProfile" content="Изменить данные" }}
-            {{> divider }}
-            {{> link href="editPassword" content="Изменить пароль" }}
-            {{> divider }}
-            {{> link href="login" content="Выйти" colorClass="link_color_red" }}
-        </div>
-    {{/ form }}
-{{/ card }}
-{{#> modal title="Загрузите файл" }}{{/ modal }}
+<div>
+    {{> panel }}
+    {{#> card }}
+        {{#> form extraClass="form_place_profile"}}
+            {{{ Avatar src="https://i.pravatar.cc/100" alt="Аватар пользователя" }}}
+            {{{ Title text="Вася" }}}
+            {{#> fieldset }}
+                {{{ Input variant="secondary" type="text" name="first_name" id="first_name" label="Имя" placeholder="Имя" onBlur=onBlur readonly="true" }}}
+                {{{ Input variant="secondary" type="text" name="second_name" id="second_name" label="Фамилия" placeholder="Фамилия" onBlur=onBlur readonly="true" }}}
+                {{{ Input variant="secondary" type="text" name="login" id="login" label="Логин" placeholder="Логин" onBlur=onBlur readonly="true" }}}
+                {{{ Input variant="secondary" type="phone" name="phone" id="phone" label="Номер телефона" placeholder="+7 999 999 9999" onBlur=onBlur readonly="true" }}}
+                {{{ Input variant="secondary" type="text" name="chat_name" id="chat_name" label="Имя в чате" placeholder="Имя в чате" onBlur=onBlur readonly="true" }}}
+            {{/ fieldset }}
+            <div class="button-group button-group_place_left">
+                {{{ Link content="Изменить данные" href="editProfilePage" }}}
+                {{> divider }}
+                {{{ Link content="Изменить пароль" href="edit-password-page" }}}
+                {{> divider }}
+                {{{ Link content="Выйти" href="login" colorClass="link_color_red" }}}
+            </div>
+        {{/ form }}
+    {{/ card }}
+    {{#> modal title="Загрузите файл" }}{{/ modal }}
+</div>
