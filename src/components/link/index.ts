@@ -4,6 +4,8 @@ import { LinkProps } from './types'
 import linkTemplate from './link.html?raw'
 
 export class Link extends Block<LinkProps> {
+    static name = 'Link'
+
     constructor(props: LinkProps) {
         super(props)
     }

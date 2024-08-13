@@ -4,6 +4,8 @@ import { ErrorTextProps } from './types'
 import errorTextTemplate from './error-text.html?raw'
 
 export class ErrorText extends Block<ErrorTextProps> {
+    static name = 'ErrorText'
+
     constructor(props: ErrorTextProps) {
         super(props)
     }

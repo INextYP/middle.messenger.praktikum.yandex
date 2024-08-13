@@ -4,6 +4,8 @@ import { TitleProps } from './types'
 import titleTemplate from './title.html?raw'
 
 export class Title extends Block<TitleProps> {
+    static name = 'Title'
+
     constructor(props: TitleProps) {
         super(props)
     }
