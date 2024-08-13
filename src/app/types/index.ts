@@ -3,7 +3,7 @@ export const enum Routes {
     register = 'register',
     chatPage = 'chatPage',
     profile = 'profile',
-    editProfile = 'edit-profile-page',
+    editProfile = 'editProfilePage',
     editPassword = 'edit-password-page',
     page404 = 'page404',
     page500 = 'page500',
