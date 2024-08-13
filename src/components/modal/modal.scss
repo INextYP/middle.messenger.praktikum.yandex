@@ -1,4 +1,4 @@
-@import "../../app/config/styles.config";
+@import '../../app/config/styles.config';
 
 .modal-overlay {
     position: fixed;
@@ -14,7 +14,9 @@
     visibility: hidden;
     opacity: 0;
     z-index: 999;
-    transition: visibility 0s, opacity 0.5s;
+    transition:
+        visibility 0s,
+        opacity 0.5s;
 
     &.visible {
         visibility: visible;
@@ -60,6 +62,6 @@
     }
 
     &-close-button:hover {
-        opacity: .7;
+        opacity: 0.7;
     }
 }
