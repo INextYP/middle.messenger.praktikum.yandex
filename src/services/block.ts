@@ -152,14 +152,14 @@ export abstract class Block<TProps, TAttributes = Record<string, unknown>> {
     }
 
     _removeEvents() {
-        const { events = {} } = this.props as Record<string, unknown>
-
-        Object.keys(events as Record<string, unknown>).forEach((eventName) => {
-            ;(this._element as HTMLElement).removeEventListener(
-                eventName,
-                (events as Record<string, () => void>)[eventName],
-            )
-        })
+        // const { events = {} } = this.props as Record<string, unknown>
+        //
+        // Object.keys(events as Record<string, unknown>).forEach((eventName) => {
+        //     ;(this._element as HTMLElement).removeEventListener(
+        //         eventName,
+        //         (events as Record<string, () => void>)[eventName],
+        //     )
+        // })
     }
 
     _componentDidMount() {

@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     registerPartials()
 
-    switchPage(Routes.profile)
+    switchPage(Routes.login)
 })
 
 let currentPage: `${Routes}`
