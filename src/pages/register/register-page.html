@@ -1,17 +1,19 @@
-{{#> card }}
-    {{#> form extraClass="form_place_register"}}
-        {{> title text="Регистрация" }}
-        {{#> fieldset }}
-            {{> input type="text" id="first_name" name="first_name" label="Имя" placeholder="Введите имя" }}
-            {{> input type="text" id="second_name" name="second_name" label="Фамилия" placeholder="Введите фамилию" }}
-            {{> input type="text" id="login" name="login" label="Логин" placeholder="Введите логин" }}
-            {{> input type="phone" id="phone" name="phone" label="Номер телефона" placeholder="+7 999 999 99 99" }}
-            {{> input type="password" id="password" name="password" label="Пароль" placeholder="Введите пароль" }}
-            {{> input type="password" id="password_check" name="password_check" label="Пароль ещё раз" placeholder="Повторите пароль" }}
-        {{/ fieldset }}
-        <div class="button-group">
-            {{> button content="Зарегистрироваться" }}
-            {{> link content="Войти" }}
-        </div>
-    {{/ form }}
-{{/ card }}
+<div>
+    {{#> card }}
+        {{#> form key="form" extraClass="form_place_register"}}
+            {{{ Title text="Регистрация" }}}
+            {{#> fieldset }}
+                {{{ Input key="first_name" type="text" name="first_name" id="first_name" label="Имя" placeholder="Введите имя" onBlur=onBlur }}}
+                {{{ Input key="second_name" type="text" name="second_name" id="second_name" label="Фамилия" placeholder="Введите фамилию" onBlur=onBlur }}}
+                {{{ Input key="login" type="text" name="login" id="login" label="Логин" placeholder="Введите логин" onBlur=onBlur }}}
+                {{{ Input key="phone" type="text" name="phone" id="phone" label="Номер телефона" placeholder="+7 999 999 99 99" onBlur=onBlur }}}
+                {{{ Input key="password" type="password" name="password" id="password" label="Пароль" placeholder="Введите пароль" onBlur=onBlur }}}
+                {{{ Input key="password_check" type="password" name="password_check" id="password_check" label="Пароль ещё раз" placeholder="Повторите пароль" onBlur=onBlur }}}
+            {{/ fieldset }}
+            <div class="button-group">
+                {{{ Button key="registerButton" type="submit" content="Зарегистрироваться" }}}
+                {{{ Link content="Войти" href="login" }}}
+            </div>
+        {{/ form }}
+    {{/ card }}
+</div>
