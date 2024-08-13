@@ -1,4 +1,4 @@
-@import "../../app/config/styles.config";
+@import '../../app/config/styles.config';
 
 .panel {
     position: absolute;
@@ -17,5 +17,5 @@
     height: 28px;
     width: 28px;
     border-radius: 50%;
-    background: $green-500-color url("/left-arrow.svg") center center no-repeat;
+    background: $green-500-color url('/left-arrow.svg') center center no-repeat;
 }
