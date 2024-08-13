@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "lint:eslint": "eslint --fix ./src",
     "lint:prettier": "prettier --write ./src --ignore-unknown",
-    "lint:scss": "npx stylelint \"**/*.scss\""
+    "lint:scss": "npx stylelint \"**/*.scss\" --fix"
   },
   "devDependencies": {
     "@eslint/js": "^9.6.0",

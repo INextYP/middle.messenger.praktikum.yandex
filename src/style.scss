@@ -1,10 +1,8 @@
 @import './app/config/normalize';
 @import './app/config/styles.config';
-
 @import '@fontsource/plus-jakarta-sans/400.css';
 @import '@fontsource/plus-jakarta-sans/500.css';
 @import '@fontsource/plus-jakarta-sans/600.css';
-
 @import './components/button/button';
 @import './components/input/input';
 @import './components/title/title';
@@ -15,7 +13,6 @@
 @import './components/search-input/search-input';
 @import './components/error-text/error-text';
 @import './components/mesage-input/message-input';
-
 @import './partials/form/form';
 @import './partials/card/card';
 @import './partials/fieldset/fieldset';
@@ -24,7 +21,6 @@
 @import './partials/chat-panel/chat-panel';
 @import './partials/chat-messages/chat-messages';
 @import './partials/modal-body/modal-body';
-
 @import './pages/chat/chat-page';
 @import './pages/login/login-page';
 
@@ -39,16 +35,13 @@
     color: $black-500-color;
     background-color: $black-700-color;
     height: 100vh;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     color-scheme: light;
-
     font-synthesis: none;
-    text-rendering: optimizeLegibility;
+    text-rendering: optimizelegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
