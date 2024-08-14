@@ -1,5 +1,6 @@
 import { Block } from '../../services/block'
 import { Routes } from '../../app/types'
+import { Button } from '../../components'
 import {
     validator,
     InputType,
@@ -9,7 +10,6 @@ import {
 import { LoginPageKeys, LoginPageProps } from './types'
 
 import loginTemplate from './login.html?raw'
-import { Button } from '../../components'
 
 export class LoginPage extends Block<LoginPageProps, LoginPageKeys> {
     constructor(props: LoginPageProps) {
@@ -47,6 +47,72 @@ export class LoginPage extends Block<LoginPageProps, LoginPageKeys> {
 
                 return true
             },
+            events: {
+                form: {
+                    submit: (e: Event) => {
+                        e.preventDefault()
+
+                        const { id: loginInputId, value: loginInputValue } =
+                            this.getInputValue('login')
+                        const {
+                            id: passwordInputId,
+                            value: passwordInputValue,
+                        } = this.getInputValue('password')
+
+                        const [isValidLoginInput, loginInputErrorMessage] =
+                            validator.validate(
+                                loginInputId as InputType,
+                                loginInputValue,
+                            ) as ValidationReturnType
+
+                        const [
+                            isValidPasswordInput,
+                            passwordInputErrorMessage,
+                        ] = validator.validate(
+                            passwordInputId as InputType,
+                            passwordInputValue,
+                        ) as ValidationReturnType
+
+                        if (!isValidLoginInput) {
+                            ;(
+                                this.attributes[
+                                    loginInputId as keyof LoginPageKeys
+                                ] as Record<
+                                    string,
+                                    Record<string, Block<unknown>>
+                                >
+                            ).attributes.errorText.setProps({
+                                errorText: loginInputErrorMessage,
+                            })
+                        }
+
+                        if (!isValidPasswordInput) {
+                            ;(
+                                this.attributes[
+                                    passwordInputId as keyof LoginPageKeys
+                                ] as Record<
+                                    string,
+                                    Record<string, Block<unknown>>
+                                >
+                            ).attributes.errorText.setProps({
+                                errorText: passwordInputErrorMessage,
+                            })
+                        }
+
+                        if (isValidLoginInput && isValidPasswordInput) {
+                            ;(this.attributes.loginButton as Button).setProps({
+                                to: Routes.chatPage,
+                            })
+                        }
+
+                        console.log(
+                            'submitData',
+                            loginInputValue,
+                            passwordInputValue,
+                        )
+                    },
+                },
+            },
         })
     }
 
@@ -57,60 +123,6 @@ export class LoginPage extends Block<LoginPageProps, LoginPageKeys> {
                 Record<string, Block<unknown>>
             >
         ).attributes.input as unknown as HTMLInputElement
-    }
-
-    componentDidMount() {
-        ;(this.attributes?.form as HTMLFormElement).addEventListener(
-            'submit',
-            (e: Event) => {
-                e.preventDefault()
-
-                const { id: loginInputId, value: loginInputValue } =
-                    this.getInputValue('login')
-                const { id: passwordInputId, value: passwordInputValue } =
-                    this.getInputValue('password')
-
-                const [isValidLoginInput, loginInputErrorMessage] =
-                    validator.validate(
-                        loginInputId as InputType,
-                        loginInputValue,
-                    ) as ValidationReturnType
-
-                const [isValidPasswordInput, passwordInputErrorMessage] =
-                    validator.validate(
-                        passwordInputId as InputType,
-                        passwordInputValue,
-                    ) as ValidationReturnType
-
-                if (!isValidLoginInput) {
-                    ;(
-                        this.attributes[
-                            loginInputId as keyof LoginPageKeys
-                        ] as Record<string, Record<string, Block<unknown>>>
-                    ).attributes.errorText.setProps({
-                        errorText: loginInputErrorMessage,
-                    })
-                }
-
-                if (!isValidPasswordInput) {
-                    ;(
-                        this.attributes[
-                            passwordInputId as keyof LoginPageKeys
-                        ] as Record<string, Record<string, Block<unknown>>>
-                    ).attributes.errorText.setProps({
-                        errorText: passwordInputErrorMessage,
-                    })
-                }
-
-                if (isValidLoginInput && isValidPasswordInput) {
-                    ;(this.attributes.loginButton as Button).setProps({
-                        to: Routes.chatPage,
-                    })
-                }
-
-                console.log('submitData', loginInputValue, passwordInputValue)
-            },
-        )
     }
 
     render() {
