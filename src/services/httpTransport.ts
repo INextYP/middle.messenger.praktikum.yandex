@@ -13,11 +13,16 @@ type Options = {
 
 type OptionsWithoutMethod = Omit<Options, 'method'>
 
+type HTTPMethod<OptionsType = Options, RequestType = unknown> = (
+    url: string,
+    options?: OptionsType,
+) => Promise<RequestType>
+
 export class HTTPTransport {
-    request(
-        url: string,
-        options: Options = { method: METHOD.GET },
-    ): Promise<XMLHttpRequest> {
+    request: HTTPMethod<Options, XMLHttpRequest> = (
+        url,
+        options = { method: METHOD.GET },
+    ) => {
         const { method, data } = options
 
         return new Promise((resolve, reject) => {
@@ -40,11 +45,11 @@ export class HTTPTransport {
         })
     }
 
-    public get(
-        url: string,
-        options: OptionsWithoutMethod = {},
+    public get: HTTPMethod<OptionsWithoutMethod> = (
+        url,
+        options = {},
         queryParams?: Record<string, string | number>,
-    ): Promise<XMLHttpRequest> {
+    ) => {
         if (queryParams) {
             const queryString = this._encodeQueryParams(queryParams)
             url += queryString
@@ -52,19 +57,19 @@ export class HTTPTransport {
         return this.request(url, { ...options, method: METHOD.GET })
     }
 
-    public post(url: string, options: Options = { method: METHOD.POST }) {
+    public post: HTTPMethod = (url, options = { method: METHOD.POST }) => {
         return this.request(url, options)
     }
 
-    public put(url: string, options: Options = { method: METHOD.PUT }) {
+    public put: HTTPMethod = (url, options = { method: METHOD.PUT }) => {
         return this.request(url, options)
     }
 
-    public patch(url: string, options: Options = { method: METHOD.PATCH }) {
+    public patch: HTTPMethod = (url, options = { method: METHOD.PATCH }) => {
         return this.request(url, options)
     }
 
-    public delete(url: string, options: Options = { method: METHOD.DELETE }) {
+    public delete: HTTPMethod = (url, options = { method: METHOD.DELETE }) => {
         return this.request(url, options)
     }
 
