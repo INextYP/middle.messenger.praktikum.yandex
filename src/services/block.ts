@@ -119,16 +119,31 @@ export abstract class Block<TProps, TAttributes = Record<string, unknown>> {
     }
 
     _addEvents() {
+        this._handleEvents('addEvent')
+    }
+
+    _removeEvents() {
+        this._handleEvents('removeEvent')
+    }
+
+    _handleEvents(key: 'addEvent' | 'removeEvent') {
         const { events = {} } = this.props as Record<string, unknown>
 
         Object.keys(events as Record<string, unknown>).forEach((event) => {
             const currentEvent = (events as Record<string, unknown>)[event]
 
             if (typeof currentEvent == 'function') {
-                ;(this._element as HTMLElement).addEventListener(
-                    event,
-                    currentEvent as () => void,
-                )
+                if (key === 'addEvent') {
+                    ;(this._element as HTMLElement).addEventListener(
+                        event,
+                        currentEvent as () => void,
+                    )
+                } else {
+                    ;(this._element as HTMLElement).removeEventListener(
+                        event,
+                        currentEvent as () => void,
+                    )
+                }
             } else {
                 const eventsObject = currentEvent as Record<string, () => void>
                 for (const childrenEvent in eventsObject) {
@@ -137,29 +152,29 @@ export abstract class Block<TProps, TAttributes = Record<string, unknown>> {
                     const element = this.attributes[event] as HTMLElement
 
                     if (element) {
-                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                        // @ts-expect-error
-                        element.addEventListener(
-                            childrenEvent,
-                            (currentEvent as Record<string, unknown>)[
-                                childrenEvent
-                            ],
-                        )
+                        if (key === 'addEvent') {
+                            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                            // @ts-expect-error
+                            element.addEventListener(
+                                childrenEvent,
+                                (currentEvent as Record<string, unknown>)[
+                                    childrenEvent
+                                ],
+                            )
+                        } else {
+                            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                            // @ts-expect-error
+                            element.removeEventListener(
+                                childrenEvent,
+                                (currentEvent as Record<string, unknown>)[
+                                    childrenEvent
+                                ],
+                            )
+                        }
                     }
                 }
             }
         })
-    }
-
-    _removeEvents() {
-        // const { events = {} } = this.props as Record<string, unknown>
-        //
-        // Object.keys(events as Record<string, unknown>).forEach((eventName) => {
-        //     ;(this._element as HTMLElement).removeEventListener(
-        //         eventName,
-        //         (events as Record<string, () => void>)[eventName],
-        //     )
-        // })
     }
 
     _componentDidMount() {
