@@ -1,4 +1,4 @@
-@import "../../app/config/styles.config";
+@import '../../app/config/styles.config';
 
 .input-container {
     display: flex;
@@ -31,9 +31,10 @@
 
     &:hover {
         box-shadow: $input-hover-shadow;
-    };
+    }
 
-    &::placeholder, .input-label {
+    &::placeholder,
+    .input-label {
         color: $black-300-color;
     }
 
@@ -74,11 +75,4 @@
             box-shadow: $input-error-hover-shadow;
         }
     }
-}
-
-.input-error-text {
-    margin: 0;
-    font: $text-regular-m;
-    color: $red-600-color;
-    padding-left: calc($main-spacing * 2);
 }

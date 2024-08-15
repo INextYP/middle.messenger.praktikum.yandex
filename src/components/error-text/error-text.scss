@@ -1,0 +1,9 @@
+@import '../../app/config/styles.config';
+
+.error-text {
+    max-width: 276px;
+    margin: 0;
+    font: $text-regular-m;
+    color: $red-600-color;
+    padding-left: calc($main-spacing * 2);
+}

@@ -1,5 +1,5 @@
 import Handlebars from 'handlebars'
-import * as Partials from '../components'
+import * as Partials from '../partials'
 
 export const registerPartials = () => {
     const partialsArray = Object.entries(Partials)

@@ -1,4 +1,4 @@
-@import "../../app/config/styles.config";
+@import '../../app/config/styles.config';
 
 $avatar-radius: 20px;
 
@@ -24,7 +24,7 @@ $avatar-radius: 20px;
     cursor: pointer;
 
     &:hover::before {
-        content: "";
+        content: '';
         background-color: $avatar-hover-color;
         height: 100%;
         width: 100%;

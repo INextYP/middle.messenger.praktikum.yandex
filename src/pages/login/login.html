@@ -1,13 +1,15 @@
-{{#> card }}
-    {{#> form extraClass="form_place_login" }}
-        {{> title text="Вход" }}
-        {{#> fieldset }}
-            {{> input type="text" id="login" name="login" label="Логин" placeholder="Введите логин" }}
-            {{> input type="password" id="password" name="password" label="Пароль" placeholder="Введите пароль"  }}
-        {{/ fieldset }}
-        <div class="button-group">
-            {{> button content="Авторизоваться" }}
-            {{> link content="Нет аккаунта?" }}
-        </div>
-    {{/ form }}
-{{/ card }}
+<div>
+    {{#> card }}
+        {{#> form key="form" extraClass="form_place_login" }}
+            {{{ Title text="Вход" }}}
+            {{#> fieldset }}
+                {{{ Input key="login" type="text" name="login" id="login" label="Логин" placeholder="Введите логин" onBlur=onBlur }}}
+                {{{ Input key="password" type="password" name="password" id="password" label="Пароль" placeholder="Введите пароль" onBlur=onBlur }}}
+            {{/ fieldset }}
+            <div class="button-group">
+                {{{ Button key="loginButton" type="submit" content="Авторизоваться" }}}
+                {{{ Link content="Нет аккаунта?" href="register" }}}
+            </div>
+        {{/ form }}
+    {{/ card }}
+</div>

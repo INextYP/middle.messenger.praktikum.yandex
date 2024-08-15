@@ -1,4 +1,4 @@
-@import "../../app/config/styles.config";
+@import '../../app/config/styles.config';
 
 .message {
     font: $text-medium-l;
@@ -7,22 +7,23 @@
     grid-auto-rows: 1fr 1fr;
     gap: $main-spacing;
     padding: $main-spacing;
-    grid-template-areas: "avatar name date"
-                         "avatar message notification";
+    grid-template-areas:
+        'avatar name date'
+        'avatar message notification';
     border-top: 1px solid $white-color;
     position: relative;
     z-index: 2;
     cursor: pointer;
 
-    &:hover:before {
-        content: "";
+    &:hover::before {
+        content: '';
         position: absolute;
         top: 0;
         left: 0;
         height: 100%;
         width: 100%;
         background: $gradient-blue-green-color;
-        opacity: .3;
+        opacity: 0.3;
         z-index: 3;
     }
 
@@ -63,6 +64,8 @@
     }
 }
 
-.message-user-name, .message-text, .message-date {
+.message-user-name,
+.message-text,
+.message-date {
     margin: 0;
 }

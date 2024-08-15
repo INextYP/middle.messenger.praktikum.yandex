@@ -1,0 +1,14 @@
+@import '../../app/config/styles.config';
+
+.chat-input-container {
+    flex: 1;
+}
+
+.chat-input-field {
+    color: $black-200-color;
+    font: $text-regular-m;
+    border: 1px solid $black-500-color;
+    background-color: $black-600-color;
+    padding: 4px 16px;
+    width: 100%;
+}

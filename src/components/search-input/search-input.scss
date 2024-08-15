@@ -1,4 +1,4 @@
-@import "../../app/config/styles.config";
+@import '../../app/config/styles.config';
 
 .search-input {
     color: $black-200-color;
@@ -14,9 +14,9 @@
 
     &:hover {
         box-shadow: $input-hover-shadow;
-    };
+    }
 
-    &::placeholder, {
+    &::placeholder {
         color: $black-300-color;
     }
 
