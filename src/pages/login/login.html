@@ -3,12 +3,12 @@
         {{#> form key="form" extraClass="form_place_login" }}
             {{{ Title text="Вход" }}}
             {{#> fieldset }}
-                {{{ Input key="login" type="text" name="login" id="login" label="Логин" placeholder="Введите логин" onBlur=onBlur }}}
-                {{{ Input key="password" type="password" name="password" id="password" label="Пароль" placeholder="Введите пароль" onBlur=onBlur }}}
+                {{{ Input key="login" type="text" name="login" id="login" label="Логин" placeholder="Введите логин" onValidate=onValidate.login }}}
+                {{{ Input key="password" type="password" name="password" id="password" label="Пароль" placeholder="Введите пароль" onValidate=onValidate.password }}}
             {{/ fieldset }}
             <div class="button-group">
                 {{{ Button key="loginButton" type="submit" content="Авторизоваться" }}}
-                {{{ Link content="Нет аккаунта?" href="register" }}}
+                {{{ Link content="Нет аккаунта?" onClick=onRoute }}}
             </div>
         {{/ form }}
     {{/ card }}

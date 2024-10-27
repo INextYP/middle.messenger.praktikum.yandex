@@ -3,16 +3,17 @@
         {{#> form key="form" extraClass="form_place_register"}}
             {{{ Title text="Регистрация" }}}
             {{#> fieldset }}
-                {{{ Input key="first_name" type="text" name="first_name" id="first_name" label="Имя" placeholder="Введите имя" onBlur=onBlur }}}
-                {{{ Input key="second_name" type="text" name="second_name" id="second_name" label="Фамилия" placeholder="Введите фамилию" onBlur=onBlur }}}
-                {{{ Input key="login" type="text" name="login" id="login" label="Логин" placeholder="Введите логин" onBlur=onBlur }}}
-                {{{ Input key="phone" type="text" name="phone" id="phone" label="Номер телефона" placeholder="+7 999 999 99 99" onBlur=onBlur }}}
-                {{{ Input key="password" type="password" name="password" id="password" label="Пароль" placeholder="Введите пароль" onBlur=onBlur }}}
-                {{{ Input key="password_check" type="password" name="password_check" id="password_check" label="Пароль ещё раз" placeholder="Повторите пароль" onBlur=onBlur }}}
+                {{{ Input key="first_name" type="text" name="first_name" id="first_name" label="Имя" placeholder="Введите имя" onValidate=onValidate.first_name }}}
+                {{{ Input key="second_name" type="text" name="second_name" id="second_name" label="Фамилия" placeholder="Введите фамилию" onValidate=onValidate.second_name }}}
+                {{{ Input key="email" type="email" name="email" id="email" label="E-mail" placeholder="Введите e-mail" onValidate=onValidate.email }}}
+                {{{ Input key="login" type="text" name="login" id="login" label="Логин" placeholder="Введите логин" onValidate=onValidate.login }}}
+                {{{ Input key="phone" type="text" name="phone" id="phone" label="Номер телефона" placeholder="+7 999 999 99 99" onValidate=onValidate.phone }}}
+                {{{ Input key="password" type="password" name="password" id="password" label="Пароль" placeholder="Введите пароль" onValidate=onValidate.password }}}
+                {{{ Input key="password_check" type="password" name="password_check" id="password_check" label="Пароль ещё раз" placeholder="Повторите пароль" onValidate=onValidate.password_check }}}
             {{/ fieldset }}
             <div class="button-group">
                 {{{ Button key="registerButton" type="submit" content="Зарегистрироваться" }}}
-                {{{ Link content="Войти" href="login" }}}
+                {{{ Link content="Войти" onClick=onRoute }}}
             </div>
         {{/ form }}
     {{/ card }}
