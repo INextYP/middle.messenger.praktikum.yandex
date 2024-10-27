@@ -7,7 +7,14 @@ export class Avatar extends Block<AvatarProps> {
     static name = 'Avatar'
 
     constructor(props: AvatarProps) {
-        super(props)
+        super({
+            ...props,
+            events: {
+                overlay: {
+                    click: props.onClick,
+                },
+            },
+        })
     }
 
     render() {
