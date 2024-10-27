@@ -1,1 +1,3 @@
-export interface AvatarProps {}
+export interface AvatarProps {
+    onClick?: () => void
+}

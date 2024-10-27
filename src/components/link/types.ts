@@ -1,1 +1,3 @@
-export interface LinkProps {}
+export interface LinkProps {
+    onClick?: () => void
+}
