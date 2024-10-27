@@ -14,7 +14,6 @@ $avatar-radius: 20px;
         height: 47px;
         width: 47px;
         box-shadow: none;
-        grid-area: avatar;
     }
 }
 
@@ -37,6 +36,6 @@ $avatar-radius: 20px;
     }
 
     &_place_chat {
-        display: none;
+        grid-area: avatar;
     }
 }
