@@ -1,59 +1,41 @@
-import { buildTemplates, registerPartials, renderDOM } from './helpers'
 import { Routes } from './app/types'
-import Block from './services/block'
-import { appContainer, pageConfig } from './app/constants'
+import { router } from './services/Router'
+import { ChatPage, LoginPage, ProfilePage, RegisterPage } from './pages'
+import { buildTemplates, registerPartials, registerHelpers } from './helpers'
 import './style.scss'
+import { connect } from './services/connect'
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+const withUser = connect((state) => ({ user: state.user }))
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+const withChats = connect((state) => ({
+    chats: state.chats,
+    messages: state.messages,
+    selectedMessage: state.selectedMessage,
+}))
 
 document.addEventListener('DOMContentLoaded', () => {
     buildTemplates()
 
     registerPartials()
 
-    switchPage(Routes.login)
-})
+    registerHelpers()
 
-let currentPage: `${Routes}`
-function switchPage(newPage: `${Routes}`) {
-    currentPage = newPage
-    appContainer.innerHTML = ''
-    return renderDOM(
-        appContainer,
-        new pageConfig[newPage]({}) as Block<unknown>,
-    )
-}
-function showModal() {
-    const modalOverlay = document.getElementById(
-        'modal-overlay',
-    ) as HTMLDivElement
-    modalOverlay.classList.add('visible')
-}
-function closeModal() {
-    const modalOverlay = document.getElementById(
-        'modal-overlay',
-    ) as HTMLDivElement
-    modalOverlay.classList.remove('visible')
-}
+    router
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        .use(Routes.login, withUser(LoginPage))
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        .use(Routes.register, RegisterPage)
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        .use(Routes.chatPage, withChats(ChatPage))
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        .use(Routes.profile, withUser(ProfilePage))
 
-document.addEventListener('click', (e) => {
-    const to = (e.target as HTMLButtonElement).getAttribute('to')
-    const href = (e.target as HTMLLinkElement).getAttribute('href')
-
-    if (to || href) {
-        e.preventDefault()
-        switchPage((to || href) as `${Routes}`)
-    }
-
-    if (
-        currentPage === Routes.profile ||
-        currentPage === Routes.editProfile ||
-        currentPage === Routes.editPassword
-    ) {
-        const imagePicker = document.querySelector('.overlay') as HTMLDivElement
-        const closeButton = document.querySelector(
-            '.modal-close-button',
-        ) as HTMLButtonElement
-
-        imagePicker.addEventListener('click', showModal)
-        closeButton.addEventListener('click', closeModal)
-    }
+    router.start()
 })
