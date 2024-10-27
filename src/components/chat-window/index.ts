@@ -27,6 +27,18 @@ export class ChatWindow extends Block<ChatWindowProps, ChatWindowKeys> {
                     isOpenUserChatControlModal: false,
                 })
             },
+            onOpenDeleteChatModal: (e: Event) => {
+                e.preventDefault()
+
+                this.setProps({
+                    isOpenDeleteChatModal: true,
+                })
+            },
+            onCloseDeleteChatModal: () => {
+                this.setProps({
+                    isOpenDeleteChatModal: false,
+                })
+            },
             onAddUser: (userId: number) => {
                 chatController
                     .addUsersInChat({
@@ -37,6 +49,19 @@ export class ChatWindow extends Block<ChatWindowProps, ChatWindowKeys> {
                     .finally(() => {
                         this.setProps({
                             isOpenUserChatControlModal: false,
+                        })
+                    })
+            },
+            onDeleteUser: (userId: number) => {
+                chatController
+                    .deleteUsersInChat({
+                        chatId: (this.props.selectedChat as Chat).id,
+                        users: [userId],
+                    })
+                    .catch((err) => console.error(err))
+                    .finally(() => {
+                        this.setProps({
+                            isOpenDeleteChatModal: false,
                         })
                     })
             },

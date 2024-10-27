@@ -5,7 +5,7 @@
             <p class="chat-user-name">{{selectedChat.title}}</p>
 
             {{{ Button content="Добавить пользователя" onClick=onOpenUserChatControlModal }}}
-            {{{ Button content="Удалить пользователя" }}}
+            {{{ Button content="Удалить пользователя" onClick=onOpenDeleteChatModal }}}
         </div>
         {{{ MessagesList messages=messages }}}
         <div class="chat-footer">
@@ -16,5 +16,8 @@
     {{/if}}
     {{#if isOpenUserChatControlModal }}
         {{{ UserChatControlModal onClose=onCloseUserChatControlModal onAddUser=onAddUser onDeleteUser=onDeleteUser }}}
+    {{/if}}
+    {{#if isOpenDeleteChatModal }}
+        {{{ DeleteUserChatModal onClose=onCloseDeleteChatModal onDeleteUser=onDeleteUser }}}
     {{/if}}
 </section>
