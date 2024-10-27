@@ -1,24 +1,17 @@
 <section class="chat-section">
     {{#> chatPanel }}
-        {{{ Link colorClass="link_color_grey" content="Профиль >" href="profile" }}}
+        {{{ Link colorClass="link_color_grey" content="Профиль >" onClick=onRoute }}}
         {{{ SearchInput type="search" name="search" placeholder="Поиск" }}}
+        {{{ Button content="Добавить чат" fullWidth="true" onClick=onAddChat }}}
 
-        {{{ Message avatar="<img src='https://i.pravatar.cc/100' class='avatar avatar_place_chat' alt='Аватар пользователя Вася' />" name="Вася" message="Рандомное сообщение" date="1 апреля 2024" notificationCount="2" }}}
-        {{{ Message avatar="<img src='https://i.pravatar.cc/100' class='avatar avatar_place_chat' alt='Аватар пользователя Вася' />" name="Вася" message="Рандомное сообщение" date="1 апреля 2024" notificationCount="2" }}}
-        {{{ Message avatar="<img src='https://i.pravatar.cc/100' class='avatar avatar_place_chat' alt='Аватар пользователя Вася' />" name="Вася" message="Рандомное сообщение" date="1 апреля 2024" notificationCount="2" }}}
-        {{{ Message avatar="<img src='https://i.pravatar.cc/100' class='avatar avatar_place_chat' alt='Аватар пользователя Вася' />" name="Вася" message="Рандомное сообщение" date="1 апреля 2024" notificationCount="2" }}}
+        {{#each chats}}
+            {{{ Message id=id avatar=avatar name=title message=last_message.content date=last_message.time notificationCount=unread_count }}}
+        {{/each}}
     {{/ chatPanel }}
-    <section class="chat-window">
-        <div class="chat-header">
-            {{{Avatar src="https://i.pravatar.cc/100" place="chat" alt="Аватар пользователя"}}}
-            <p class="chat-user-name">Андрей</p>
-            <button class="chat-menu-button"></button>
-        </div>
-        <div>Сообщения...</div>
-        <div class="chat-footer">
-            <button class="chat-file-loader"></button>
-            {{{ MessageInput key="message" onBlur=onBlur }}}
-            <button key="sendButton" class="chat-send-button"></button>
-        </div>
-    </section>
+
+    {{{ ChatWindow key="chat-window" messages=messages }}}
+
+    {{#if isOpenAddChatModal}}
+        {{{ AddChatModal onSubmit=onSubmitChat onClose=onCloseAddChatModal title="Ввведите название чата" }}}
+    {{/if}}
 </section>
