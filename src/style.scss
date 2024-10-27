@@ -8,11 +8,14 @@
 @import './components/title/title';
 @import './components/link/link';
 @import './components/avatar/avatar';
-@import './components/modal/modal';
 @import './components/message/message';
 @import './components/search-input/search-input';
 @import './components/error-text/error-text';
 @import './components/mesage-input/message-input';
+@import './components/modal/modal';
+@import './components/chat-window/chat-window';
+@import './components/messages-list/messages-list';
+@import './components/chat-message/chat-message';
 @import './partials/form/form';
 @import './partials/card/card';
 @import './partials/fieldset/fieldset';
@@ -20,7 +23,7 @@
 @import './partials/panel/panel';
 @import './partials/chat-panel/chat-panel';
 @import './partials/chat-messages/chat-messages';
-@import './partials/modal-body/modal-body';
+@import './partials/modal/modal';
 @import './pages/chat/chat-page';
 @import './pages/login/login-page';
 
