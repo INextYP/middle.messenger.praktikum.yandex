@@ -15,9 +15,9 @@ export class ChatController {
     }
 
     public async createChat(data: CreateChatDto) {
-        const chats = await chatApi.createChat(data)
+        await chatApi.createChat(data)
 
-        Store.set('chats', chats)
+        await this.getChatList()
     }
 
     public async selectMessage(id: number) {
@@ -39,10 +39,10 @@ export class ChatController {
         messagesApi.connect()
 
         Store.set('selectedMessage', chat)
+        Store.set('messages', [])
     }
 
     sendMessage(message: string) {
-        console.log(`this is message ===>`, messagesApi)
         messagesApi?.addMessage(message)
     }
 
