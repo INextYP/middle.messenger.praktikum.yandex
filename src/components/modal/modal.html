@@ -1,7 +1,8 @@
-<div id="modal-overlay" class="modal-overlay">
-    <div class="modal">
-        <h2 class="modal-title">{{title}}</h2>
-        {{{modalBody}}}
-        <button class="modal-close-button">&times;</button>
-    </div>
-</div>
+{{#> modal }}
+    {{#> form key="form" extraClass="modalForm" }}
+        <input key="file_input" type='file' name='filename'/>
+        {{{ ErrorText key="errorText" errorText=errorText }}}
+        {{{ Button type="submit" content="Сохранить" }}}
+    {{/form }}
+    <button key="close_button" class="modal-close-button">&times;</button>
+{{/modal }}
