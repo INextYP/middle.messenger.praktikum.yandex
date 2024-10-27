@@ -7,7 +7,14 @@ export class Link extends Block<LinkProps> {
     static name = 'Link'
 
     constructor(props: LinkProps) {
-        super(props)
+        super({
+            ...props,
+            events: {
+                link: {
+                    click: props?.onClick,
+                },
+            },
+        })
     }
 
     render() {
