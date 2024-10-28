@@ -162,6 +162,10 @@ export class ProfilePage extends Block<ProfilePageProps, ProfilePageKeys> {
         })
     }
 
+    componentDidMount() {
+        authController.getUserData().catch((error) => console.error(error))
+    }
+
     render() {
         return this.compile(profilePageTemplate, this.props)
     }

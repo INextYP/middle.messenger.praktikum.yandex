@@ -16,6 +16,14 @@ export class AuthController {
         router.go(Routes.chatPage)
     }
 
+    public async getUserData() {
+        const user = await authApi.getUserProfile()
+
+        if (user) {
+            Store.set('user', user)
+        }
+    }
+
     public async register(data: RegisterBody) {
         const user = await authApi.signUp(data)
 

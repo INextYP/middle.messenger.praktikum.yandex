@@ -2,12 +2,14 @@ import Block from '../../services/block'
 import { router } from '../../services/Router'
 import { CreateChatDto, Routes } from '../../app/types'
 import { ChatController } from '../../controllers/chat'
+import { AuthController } from '../../controllers/auth'
 
 import { ChatPageKeys, ChatPageProps } from './types'
 
 import chatPageTemplate from './chat-page.html?raw'
 
 const chatController = new ChatController()
+const authController = new AuthController()
 
 export class ChatPage extends Block<ChatPageProps, ChatPageKeys> {
     constructor(props: ChatPageProps) {
@@ -48,8 +50,11 @@ export class ChatPage extends Block<ChatPageProps, ChatPageKeys> {
     }
 
     componentDidMount() {
-        chatController.getChatList().catch((e) => {
-            console.error(e)
+        Promise.all([
+            authController.getUserData(),
+            chatController.getChatList(),
+        ]).catch((err: Error) => {
+            console.error(err)
         })
     }
 }
