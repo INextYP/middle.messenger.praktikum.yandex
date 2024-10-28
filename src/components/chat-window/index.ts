@@ -69,6 +69,15 @@ export class ChatWindow extends Block<ChatWindowProps, ChatWindowKeys> {
             onValidate: {
                 message: validator.checkMessage,
             },
+            onChangeAvatar: (e: Event) => {
+                e.preventDefault()
+                this.setProps({ isOpenChangeAvatarModal: true })
+            },
+            onChangeAvatarSubmit: (avatar: File) => {
+                chatController.updateChatAvatar(avatar).then(() => {
+                    this.setProps({ isOpenChangeAvatarModal: false })
+                })
+            },
             events: {
                 sendButton: {
                     click: (e: Event) => {

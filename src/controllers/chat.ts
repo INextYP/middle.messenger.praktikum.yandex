@@ -78,4 +78,18 @@ export class ChatController {
     public async deleteUsersInChat(data: AddUsersToChatBody) {
         return chatApi.deleteUsersToChat(data)
     }
+
+    public async updateChatAvatar(file: File) {
+        const store = Store.getState() as State
+        const chat = store['selectedMessage']
+
+        const newChatData = await chatApi.updateChatAvatar(
+            file,
+            String(chat.id),
+        )
+
+        Store.set('selectedMessage', { ...chat, ...newChatData })
+
+        return this.getChatList()
+    }
 }

@@ -1,7 +1,7 @@
 <section class="chat-window">
     {{#if selectedChat }}
         <div class="chat-header">
-            {{{Avatar src=selectedChat.avatar place="chat" alt=selectedChat.title}}}
+            {{{Avatar onClick=onChangeAvatar src=selectedChat.avatar place="chat" alt=selectedChat.title}}}
             <p class="chat-user-name">{{selectedChat.title}}</p>
 
             {{{ Button content="Добавить пользователя" onClick=onOpenUserChatControlModal }}}
@@ -19,5 +19,8 @@
     {{/if}}
     {{#if isOpenDeleteChatModal }}
         {{{ DeleteUserChatModal onClose=onCloseDeleteChatModal onDeleteUser=onDeleteUser }}}
+    {{/if}}
+    {{#if isOpenChangeAvatarModal}}
+        {{{ Modal onSubmit=onChangeAvatarSubmit title="Загрузите файл" }}}
     {{/if}}
 </section>
