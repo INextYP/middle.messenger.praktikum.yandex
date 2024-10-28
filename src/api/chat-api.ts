@@ -23,6 +23,16 @@ export class ChatApi extends Api {
         return this.getInstance().put<string>('/users', { data })
     }
 
+    async updateChatAvatar(avatar: File, chatId: string) {
+        const data = new FormData()
+        data.append('chatId', chatId)
+        data.append('avatar', avatar)
+
+        return this.getInstance().put<
+            Pick<Chat, 'avatar' | 'id' | 'title' | 'created_by'>
+        >('/avatar', { data })
+    }
+
     async deleteUsersToChat(data: AddUsersToChatBody) {
         return this.getInstance().delete('/users', { data })
     }
