@@ -112,8 +112,11 @@ export class HTTPTransport {
         return this.request(url, options)
     }
 
-    public delete: HTTPMethod = (url, options = { method: METHOD.DELETE }) => {
-        return this.request(url, options)
+    public delete: HTTPMethod = (url, options = {}) => {
+        return this.request(url, {
+            ...options,
+            method: METHOD.DELETE,
+        })
     }
 
     private _encodeQueryParams(params: Record<string, string | number>) {
