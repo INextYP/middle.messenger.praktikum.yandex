@@ -1,1 +1,3 @@
-export interface MessageProps {}
+export interface MessageProps {
+    id?: number
+}

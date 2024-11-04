@@ -1,24 +1,37 @@
 <div>
     {{> panel }}
     {{#> card }}
-        {{#> form extraClass="form_place_profile"}}
-            {{{ Avatar src="https://i.pravatar.cc/100" alt="Аватар пользователя" }}}
-            {{{ Title text="Вася" }}}
+        {{#> form key="form" extraClass="form_place_profile"}}
+            {{{ Avatar onClick=onChangeAvatar src=user.avatar alt="Аватар пользователя" }}}
+            {{{ Title text=user.first_name }}}
             {{#> fieldset }}
-                {{{ Input variant="secondary" type="text" name="first_name" id="first_name" label="Имя" placeholder="Имя" onBlur=onBlur readonly="true" }}}
-                {{{ Input variant="secondary" type="text" name="second_name" id="second_name" label="Фамилия" placeholder="Фамилия" onBlur=onBlur readonly="true" }}}
-                {{{ Input variant="secondary" type="text" name="login" id="login" label="Логин" placeholder="Логин" onBlur=onBlur readonly="true" }}}
-                {{{ Input variant="secondary" type="phone" name="phone" id="phone" label="Номер телефона" placeholder="+7 999 999 9999" onBlur=onBlur readonly="true" }}}
-                {{{ Input variant="secondary" type="text" name="chat_name" id="chat_name" label="Имя в чате" placeholder="Имя в чате" onBlur=onBlur readonly="true" }}}
+                {{#if isEditPassword}}
+                    {{{ Input variant="secondary" key="old_password" type="password" name="old_password" id="old_password" label="Старый пароль" placeholder="Старый пароль" onValidate=onValidate.password }}}
+                    {{{ Input variant="secondary" key="new_password" type="password" name="new_password" id="new_password" label="Новый пароль" placeholder="Новый пароль" onValidate=onValidate.password }}}
+                    {{{ Input variant="secondary" key="check_new_password" type="password" name="check_new_password" id="check_new_password" label="Повторите новый пароль" placeholder="Повторите новый пароль" onValidate=onValidate.check_new_password }}}
+                {{else}}
+                    {{{ Input key="first_name" value=user.first_name variant="secondary" type="text" name="first_name" id="first_name" label="Имя" placeholder="Имя" onValidate=onValidate.first_name readonly=(not isEdit) }}}
+                    {{{ Input key="second_name" value=user.second_name variant="secondary" type="text" name="second_name" id="second_name" label="Фамилия" placeholder="Фамилия" onValidate=onValidate.second_name readonly=(not isEdit) }}}
+                    {{{ Input key="login" value=user.login variant="secondary" type="text" name="login" id="login" label="Логин" placeholder="Логин" onValidate=onValidate.login readonly=(not isEdit) }}}
+                    {{{ Input key="email" value=user.email variant="secondary" type="email" name="email" id="email" label="Email" placeholder="Email" onValidate=onValidate.email readonly=(not isEdit) }}}
+                    {{{ Input key="phone" value=user.phone variant="secondary" type="phone" name="phone" id="phone" label="Номер телефона" placeholder="+7 999 999 9999" onValidate=onValidate.phone readonly=(not isEdit) }}}
+                    {{{ Input key="display_name" value=user.display_name variant="secondary" type="text" name="display_name" id="display_name" label="Имя в чате" placeholder="Имя в чате" onValidate=onValidate.first_name readonly=(not isEdit) }}}
+                {{/if}}
             {{/ fieldset }}
             <div class="button-group button-group_place_left">
-                {{{ Link content="Изменить данные" href="editProfilePage" }}}
-                {{> divider }}
-                {{{ Link content="Изменить пароль" href="edit-password-page" }}}
-                {{> divider }}
-                {{{ Link content="Выйти" href="login" colorClass="link_color_red" }}}
+                {{#or isEdit isEditPassword}}
+                    {{{ Button type="submit" content="Сохранить" fullWidth="true" }}}
+                {{else}}
+                    {{{ Link onClick=onEditData content="Изменить данные" }}}
+                    {{> divider }}
+                    {{{ Link onClick=onEditPassword content="Изменить пароль" }}}
+                    {{> divider }}
+                    {{{ Link onClick=onLogout content="Выйти" colorClass="link_color_red" }}}
+                {{/or}}
             </div>
         {{/ form }}
     {{/ card }}
-    {{#> modal title="Загрузите файл" }}{{/ modal }}
+    {{#if isOpenModal}}
+        {{{ Modal onSubmit=onSubmit title="Загрузите файл" }}}
+    {{/if}}
 </div>

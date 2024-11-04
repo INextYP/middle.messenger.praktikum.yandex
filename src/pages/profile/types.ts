@@ -1,6 +1,9 @@
 import { Input } from '../../components'
 
-export interface ProfilePageProps {}
+export interface ProfilePageProps {
+    isEdit?: boolean
+    isEditPassword?: boolean
+}
 
 export interface ProfilePageKeys {
     form: HTMLFormElement
@@ -8,5 +11,9 @@ export interface ProfilePageKeys {
     second_name: Input
     login: Input
     phone: Input
-    chat_name: Input
+    email: Input
+    display_name: Input
+    old_password: Input
+    new_password: Input
+    check_new_password: Input
 }

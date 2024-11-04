@@ -1,172 +1,93 @@
-import Block, { AttributesType } from '../../services/block'
-import {
-    InputType,
-    ValidationReturnType,
-    validator,
-} from '../../services/valdator'
+import Block from '../../services/block'
+import { validator } from '../../services/valdator'
+import { router } from '../../services/Router'
+import { RegisterBody, Routes } from '../../app/types'
 
 import { RegisterPageProps, RegisterPageKeys } from './types'
 
 import registerPageTemplate from './register-page.html?raw'
+import { AuthController } from '../../controllers/auth'
+
+const authController = new AuthController()
 
 export class RegisterPage extends Block<RegisterPageProps, RegisterPageKeys> {
     constructor(props: RegisterPageProps) {
         super({
             ...props,
-            onBlur: (e: Event) => {
-                const { id, value } = e.currentTarget as HTMLInputElement
+            onValidate: {
+                first_name: validator.checkName,
+                second_name: validator.checkName,
+                email: validator.checkEmail,
+                login: validator.checkLogin,
+                phone: validator.checkPhone,
+                password: validator.checkPassword,
+                password_check: (value: string) => {
+                    const passwordInput = this.attributes
+                        .password as RegisterPageKeys['password']
 
-                const key = id as keyof RegisterPageKeys
-                const currentAttribute = this.attributes?.[
-                    key
-                ] as AttributesType
+                    if (value !== passwordInput.getInputData('value')) {
+                        return [false, 'Пароли не совпадают']
+                    }
 
-                if (key === 'password_check' && !value) {
-                    currentAttribute.attributes.errorText.setProps({
-                        errorText: 'Повторите пароль',
-                    })
-
-                    return false
-                }
-
-                const [isValid, message] = validator.validate(
-                    id as InputType,
-                    value,
-                ) as ValidationReturnType
-
-                if (!isValid) {
-                    currentAttribute.attributes.errorText.setProps({
-                        errorText: message,
-                    })
-
-                    return false
-                }
-
-                currentAttribute.attributes.errorText.setProps({
-                    errorText: undefined,
-                })
-
-                return true
+                    return [true, null]
+                },
+            },
+            onRoute: (e: Event) => {
+                e.preventDefault()
+                router.go(Routes.login)
             },
             events: {
                 form: {
                     submit: (e: Event) => {
                         e.preventDefault()
 
-                        const {
-                            id: firstNameInputId,
-                            value: firstNameInputValue,
-                        } = this.getInputValue(
-                            'first_name',
-                        ) as unknown as HTMLInputElement
-                        const {
-                            id: secondNameInputId,
-                            value: secondNameInputValue,
-                        } = this.getInputValue(
-                            'second_name',
-                        ) as unknown as HTMLInputElement
-                        const { id: loginInputId, value: loginInputValue } =
-                            this.getInputValue(
-                                'login',
-                            ) as unknown as HTMLInputElement
-                        const { id: phoneInputId, value: phoneInputValue } =
-                            this.getInputValue(
-                                'phone',
-                            ) as unknown as HTMLInputElement
-                        const {
-                            id: passwordInputId,
-                            value: passwordInputValue,
-                        } = this.getInputValue(
-                            'password',
-                        ) as unknown as HTMLInputElement
-                        const {
-                            id: passwordCheckInputId,
-                            value: passwordCheckInputValue,
-                        } = this.getInputValue(
-                            'password_check',
-                        ) as unknown as HTMLInputElement
+                        const attributes = this.attributes as RegisterPageKeys
 
-                        const validatedFields = [
-                            [
-                                ...(validator.validate(
-                                    firstNameInputId as InputType,
-                                    firstNameInputValue,
-                                ) as ValidationReturnType),
-                                firstNameInputId,
-                            ],
-                            [
-                                ...(validator.validate(
-                                    secondNameInputId as InputType,
-                                    secondNameInputValue,
-                                ) as ValidationReturnType),
-                                secondNameInputId,
-                            ],
-                            [
-                                ...(validator.validate(
-                                    loginInputId as InputType,
-                                    loginInputValue,
-                                ) as ValidationReturnType),
-                                loginInputId,
-                            ],
-                            [
-                                ...(validator.validate(
-                                    phoneInputId as InputType,
-                                    phoneInputValue,
-                                ) as ValidationReturnType),
-                                phoneInputId,
-                            ],
-                            [
-                                ...(validator.validate(
-                                    passwordInputId as InputType,
-                                    passwordInputValue,
-                                ) as ValidationReturnType),
-                                passwordInputId,
-                            ],
-                        ]
+                        const firstNameInput = attributes.first_name
+                        const secondNameInput = attributes.second_name
+                        const emailInput = attributes.email
+                        const loginInput = attributes.login
+                        const phoneInput = attributes.phone
+                        const passwordInput = attributes.password
+                        const passwordCheckInput = attributes.password_check
 
-                        for (const [
-                            hasError,
-                            errorText,
-                            fieldId,
-                        ] of validatedFields) {
-                            if (!hasError) {
-                                const key = fieldId as keyof RegisterPageKeys
-                                ;(
-                                    this.attributes?.[key] as AttributesType
-                                ).attributes.errorText.setProps({
-                                    errorText,
-                                })
-                            }
+                        const validationResult = {
+                            first_name: firstNameInput.handleValidation(),
+                            second_name: secondNameInput.handleValidation(),
+                            email: emailInput.handleValidation(),
+                            login: loginInput.handleValidation(),
+                            phone: phoneInput.handleValidation(),
+                            password: passwordInput.handleValidation(),
+                            password_check:
+                                passwordCheckInput.handleValidation(),
                         }
 
-                        if (passwordCheckInputValue !== passwordInputValue) {
-                            const key =
-                                passwordCheckInputId as keyof RegisterPageKeys
+                        const isValid =
+                            Object.values(validationResult).filter(Boolean)
+                                .length !== 0
 
-                            ;(
-                                this.attributes?.[key] as AttributesType
-                            ).attributes.errorText.setProps({
-                                errorText: 'Пароли не совпадают',
+                        if (isValid) {
+                            const data = {
+                                first_name:
+                                    firstNameInput.getInputData('value'),
+                                second_name:
+                                    secondNameInput.getInputData('value'),
+                                email: emailInput.getInputData('value'),
+                                login: loginInput.getInputData('value'),
+                                phone: phoneInput.getInputData('value'),
+                                password: passwordInput.getInputData('value'),
+                                password_check:
+                                    passwordCheckInput.getInputData('value'),
+                            } as RegisterBody
+
+                            authController.register(data).catch((error) => {
+                                console.error(error)
                             })
                         }
-
-                        console.log(
-                            'submitData',
-                            firstNameInputValue,
-                            secondNameInputValue,
-                            loginInputValue,
-                            phoneInputValue,
-                            passwordInputValue,
-                            passwordCheckInputValue,
-                        )
                     },
                 },
             },
         })
-    }
-
-    getInputValue(key: keyof RegisterPageKeys) {
-        return (this.attributes?.[key] as AttributesType).attributes.input
     }
 
     render() {

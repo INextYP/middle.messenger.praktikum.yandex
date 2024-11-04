@@ -1,0 +1,17 @@
+@import '../../app/config/styles.config';
+
+.chatMessage {
+    background-color: $black-200-color;
+    padding: 8px;
+    border-radius: 16px;
+    max-width: 250px;
+}
+
+.messageText {
+    margin: 0 0 8px;
+}
+
+.messageDate {
+    margin: 0;
+    text-align: right;
+}

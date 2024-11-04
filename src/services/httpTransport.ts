@@ -7,8 +7,12 @@ enum METHOD {
 }
 
 type Options = {
-    method: METHOD
+    method?: METHOD
     data?: unknown
+    withCredentials?: boolean
+    responseType?: XMLHttpRequestResponseType
+    headers?: Record<string, unknown>
+    timeout?: number
 }
 
 type OptionsWithoutMethod = Omit<Options, 'method'>
@@ -19,58 +23,100 @@ type HTTPMethod<OptionsType = Options, RequestType = unknown> = (
 ) => Promise<RequestType>
 
 export class HTTPTransport {
-    request: HTTPMethod<Options, XMLHttpRequest> = (
-        url,
-        options = { method: METHOD.GET },
-    ) => {
-        const { method, data } = options
+    private readonly baseUrl: string
+
+    constructor(baseUrl = '') {
+        this.baseUrl = baseUrl
+    }
+
+    request = <ResponseType = unknown>(
+        url: string,
+        options: Options = { method: METHOD.GET },
+    ): Promise<ResponseType> => {
+        const {
+            method,
+            data,
+            withCredentials = true,
+            responseType = 'json',
+            timeout = 60000,
+            headers,
+        } = options
 
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest()
-            xhr.open(method, url)
+            xhr.open(method as string, `${this.baseUrl}${url}`)
 
             xhr.onload = function () {
-                resolve(xhr)
+                resolve(xhr.response)
             }
 
             xhr.onabort = reject
             xhr.onerror = reject
             xhr.ontimeout = reject
 
-            if (method === METHOD.GET || !data) {
+            xhr.withCredentials = withCredentials
+            xhr.responseType = responseType
+            xhr.timeout = timeout
+
+            Object.keys(headers ?? {}).forEach(([key, value]) => {
+                xhr.setRequestHeader(key, value)
+            })
+
+            if (data instanceof FormData) {
+                xhr.send(data)
+            } else if (method === METHOD.GET || !data) {
                 xhr.send()
             } else {
-                xhr.send(data as Document | XMLHttpRequestBodyInit)
+                xhr.setRequestHeader('Content-Type', 'application/json')
+                xhr.send(JSON.stringify(data))
             }
         })
     }
 
-    public get: HTTPMethod<OptionsWithoutMethod> = (
-        url,
-        options = {},
+    public get = <ResponseType = unknown>(
+        url: string,
+        options: OptionsWithoutMethod = {},
         queryParams?: Record<string, string | number>,
-    ) => {
+    ): Promise<ResponseType> => {
         if (queryParams) {
             const queryString = this._encodeQueryParams(queryParams)
             url += queryString
         }
-        return this.request(url, { ...options, method: METHOD.GET })
+        return this.request<ResponseType>(url, {
+            ...options,
+            method: METHOD.GET,
+        })
     }
 
-    public post: HTTPMethod = (url, options = { method: METHOD.POST }) => {
-        return this.request(url, options)
+    public post = <ResponseType = unknown>(
+        url: string,
+        options: Options = {},
+    ): Promise<ResponseType> => {
+        return this.request<ResponseType>(url, {
+            ...options,
+            method: METHOD.POST,
+        })
     }
 
-    public put: HTTPMethod = (url, options = { method: METHOD.PUT }) => {
-        return this.request(url, options)
+    public put = <ResponseType = unknown>(
+        url: string,
+        options: Options = {},
+    ): Promise<ResponseType> => {
+        return this.request<ResponseType>(url, {
+            ...options,
+            method: METHOD.PUT,
+        })
     }
 
     public patch: HTTPMethod = (url, options = { method: METHOD.PATCH }) => {
         return this.request(url, options)
     }
 
-    public delete: HTTPMethod = (url, options = { method: METHOD.DELETE }) => {
-        return this.request(url, options)
+    public delete: HTTPMethod = (url, options = {}) => {
+        return this.request(url, {
+            ...options,
+            method: METHOD.DELETE,
+        })
     }
 
     private _encodeQueryParams(params: Record<string, string | number>) {

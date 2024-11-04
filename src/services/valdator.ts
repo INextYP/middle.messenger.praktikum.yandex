@@ -9,7 +9,7 @@ export type InputType =
 export type ValidationReturnType = [boolean, string | null]
 
 class Validator {
-    private _checkLogin(value: string): ValidationReturnType {
+    checkLogin(value: string): ValidationReturnType {
         if (value.length < 3 || value.length > 20) {
             return [false, 'Логин должен быть от 3 до 20 символов']
         }
@@ -29,7 +29,9 @@ class Validator {
         return [true, null]
     }
 
-    private _checkPassword(value: string): ValidationReturnType {
+    checkPassword(value: string): ValidationReturnType {
+        console.log(value)
+
         if (value.length < 8 || value.length > 40) {
             return [false, 'Пароль должен быть от 8 до 40 символов']
         }
@@ -42,7 +44,7 @@ class Validator {
         return [true, null]
     }
 
-    private _checkName(value: string): ValidationReturnType {
+    checkName(value: string): ValidationReturnType {
         if (value === '') {
             return [false, 'Не может быть пустым']
         }
@@ -60,7 +62,7 @@ class Validator {
         return [true, null]
     }
 
-    private _checkEmail(value: string): ValidationReturnType {
+    checkEmail(value: string): ValidationReturnType {
         if (value === '') {
             return [false, 'Email не может быть пустым']
         }
@@ -74,7 +76,7 @@ class Validator {
         return [true, null]
     }
 
-    private _checkPhone(value: string): ValidationReturnType {
+    checkPhone(value: string): ValidationReturnType {
         if (value === '') {
             return [false, 'Телефон не может быть пустым']
         }
@@ -88,7 +90,7 @@ class Validator {
         return [true, null]
     }
 
-    private _checkMessage(value: string): ValidationReturnType {
+    checkMessage(value: string): ValidationReturnType {
         const messageRegex = /.+/
 
         if (!messageRegex.test(value)) {
@@ -103,27 +105,27 @@ class Validator {
         value: string,
     ): ValidationReturnType | undefined {
         if (type === 'login') {
-            return this._checkLogin(value)
+            return this.checkLogin(value)
         }
 
         if (type === 'password') {
-            return this._checkPassword(value)
+            return this.checkPassword(value)
         }
 
         if (type === 'first_name' || type === 'second_name') {
-            return this._checkName(value)
+            return this.checkName(value)
         }
 
         if (type === 'email') {
-            return this._checkEmail(value)
+            return this.checkEmail(value)
         }
 
         if (type === 'phone') {
-            return this._checkPhone(value)
+            return this.checkPhone(value)
         }
 
         if (type === 'message') {
-            return this._checkMessage(value)
+            return this.checkMessage(value)
         }
     }
 }
