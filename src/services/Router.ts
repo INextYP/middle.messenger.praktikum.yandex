@@ -2,7 +2,7 @@ import { Route } from './Route.ts'
 import Block from './block.ts'
 import { appContainer } from '../app/constants'
 
-class Router {
+export class Router {
     private routes: Route[] = []
     private _currentRoute: Route | null = null
     private readonly history = window.history
@@ -32,7 +32,6 @@ class Router {
     }
 
     _onRoute(pathname: string) {
-        console.log('route', pathname, this.routes)
         const route = this.getRoute(pathname)
         if (!route) {
             return
