@@ -15,8 +15,8 @@
     opacity: 0;
     z-index: 999;
     transition:
-            visibility 0s,
-            opacity 0.5s;
+        visibility 0s,
+        opacity 0.5s;
 
     &.visible {
         visibility: visible;

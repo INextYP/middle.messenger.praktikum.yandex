@@ -1,4 +1,4 @@
-import { HTTPTransport } from './httpTransport.ts'
+import HTTPTransport from './httpTransport'
 
 export const BASE_URL = 'https://ya-praktikum.tech/api/v2'
 

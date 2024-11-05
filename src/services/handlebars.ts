@@ -1,5 +1,7 @@
-import Handlebars, { compile, HelperOptions } from 'handlebars'
+import Handlebars, { HelperOptions } from 'handlebars'
 import Block from './block'
+
+const { compile } = Handlebars
 
 export type ComponentType = new (
     hash: Record<string, unknown>,
