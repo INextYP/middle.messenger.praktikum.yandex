@@ -1,7 +1,7 @@
 import Block from '../../services/block'
 import { ErrorTextProps } from './types'
 
-import errorTextTemplate from './error-text.html?raw'
+import { template } from './error-text.hbs.ts'
 
 export class ErrorText extends Block<ErrorTextProps> {
     static name = 'ErrorText'
@@ -11,6 +11,6 @@ export class ErrorText extends Block<ErrorTextProps> {
     }
 
     render() {
-        return this.compile(errorTextTemplate, this.props)
+        return this.compile(template, this.props)
     }
 }

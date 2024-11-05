@@ -1,1 +1,3 @@
-export { default as chatMessages } from './chat-messages.html?raw'
+export const chatMessages = `<div class="chat-messages">
+    {{> @partial-block }}
+</div>`

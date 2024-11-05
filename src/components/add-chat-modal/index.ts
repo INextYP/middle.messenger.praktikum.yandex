@@ -2,7 +2,7 @@ import { validator } from '../../services/valdator'
 import Block from '../../services/block'
 import { AddChatModalKeys, AddChatModalProps } from './types'
 
-import addChatModalTemplate from './add-chat-modal.html?raw'
+import { template } from './add-chat-modal.hbs.ts'
 
 export class AddChatModal extends Block<AddChatModalProps, AddChatModalKeys> {
     static name = 'AddChatModal'
@@ -48,6 +48,6 @@ export class AddChatModal extends Block<AddChatModalProps, AddChatModalKeys> {
     }
 
     render() {
-        return this.compile(addChatModalTemplate, this.props)
+        return this.compile(template, this.props)
     }
 }

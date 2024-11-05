@@ -1,7 +1,7 @@
 import { Block } from '../../services/block'
 import { TitleProps } from './types'
 
-import titleTemplate from './title.html?raw'
+import { template } from './title.hbs.ts'
 
 export class Title extends Block<TitleProps> {
     static name = 'Title'
@@ -11,6 +11,6 @@ export class Title extends Block<TitleProps> {
     }
 
     render() {
-        return this.compile(titleTemplate, this.props)
+        return this.compile(template, this.props)
     }
 }

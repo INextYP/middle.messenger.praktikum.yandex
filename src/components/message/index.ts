@@ -2,7 +2,7 @@ import Block from '../../services/block'
 import { MessageProps } from './types'
 import { ChatController } from '../../controllers/chat'
 
-import messageTemplate from './message.html?raw'
+import { template } from './message.hbs.ts'
 
 const chatController = new ChatController()
 
@@ -31,6 +31,6 @@ export class Message extends Block<MessageProps> {
 
     render() {
         console.log(this.props)
-        return this.compile(messageTemplate, this.props)
+        return this.compile(template, this.props)
     }
 }

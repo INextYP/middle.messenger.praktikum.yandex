@@ -1,7 +1,7 @@
 import Block from '../../services/block'
 import { DeleteUserChatModalKeys, DeleteUserChatModalProps } from './types'
 
-import deleteUserChatModalTemplate from './delete-user-chat-modal.html?raw'
+import { template } from './delete-user-chat-modal.hbs.ts'
 
 export class DeleteUserChatModal extends Block<
     DeleteUserChatModalProps,
@@ -43,6 +43,6 @@ export class DeleteUserChatModal extends Block<
     }
 
     render() {
-        return this.compile(deleteUserChatModalTemplate, this.props)
+        return this.compile(template, this.props)
     }
 }

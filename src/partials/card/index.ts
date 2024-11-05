@@ -1,1 +1,3 @@
-export { default as card } from './card.html?raw'
+export const card = `<div class="card">
+    {{> @partial-block }}
+</div>`

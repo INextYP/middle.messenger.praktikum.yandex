@@ -1,7 +1,7 @@
 import Block from '../../services/block'
 import { ChatMessageProps } from './types'
 
-import chatMessageTemplate from './chat-message.html?raw'
+import { template } from './chat-message.hbs.ts'
 
 export class ChatMessage extends Block<ChatMessageProps> {
     static name = 'ChatMessage'
@@ -11,6 +11,6 @@ export class ChatMessage extends Block<ChatMessageProps> {
     }
 
     render() {
-        return this.compile(chatMessageTemplate, this.props)
+        return this.compile(template, this.props)
     }
 }

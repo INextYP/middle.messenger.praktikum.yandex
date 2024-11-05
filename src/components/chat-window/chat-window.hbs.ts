@@ -1,4 +1,4 @@
-<section class="chat-window">
+export const template = `<section class="chat-window">
     {{#if selectedChat }}
         <div class="chat-header">
             {{{Avatar onClick=onChangeAvatar src=selectedChat.avatar place="chat" alt=selectedChat.title}}}
@@ -24,3 +24,4 @@
         {{{ Modal onSubmit=onChangeAvatarSubmit title="Загрузите файл" }}}
     {{/if}}
 </section>
+`

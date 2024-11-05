@@ -1,1 +1,3 @@
-export { default as chatPanel } from './chat-panel.html?raw'
+export const chatPanel = `<aside class="chat-panel">
+    {{> @partial-block }}
+</aside>`

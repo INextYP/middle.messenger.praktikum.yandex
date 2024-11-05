@@ -1,1 +1,1 @@
-export { default as panel } from './panel.html?raw'
+export const panel = `<div class="panel"></div>`

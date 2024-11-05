@@ -1,1 +1,1 @@
-export { default as divider } from './divider.html?raw'
+export const divider = `<hr class="divider"/>`

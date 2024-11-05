@@ -1,7 +1,7 @@
 import Block from '../../services/block'
 import { SearchInputProps } from './types'
 
-import searchInputTemplate from './search-input.html?raw'
+import { template } from './search-input.hbs.ts'
 
 export class SearchInput extends Block<SearchInputProps> {
     static name = 'SearchInput'
@@ -11,6 +11,6 @@ export class SearchInput extends Block<SearchInputProps> {
     }
 
     render() {
-        return this.compile(searchInputTemplate, this.props)
+        return this.compile(template, this.props)
     }
 }
