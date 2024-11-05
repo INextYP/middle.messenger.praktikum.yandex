@@ -4,30 +4,42 @@
   "version": "0.0.2",
   "type": "module",
   "scripts": {
+    "test": "mocha",
     "start": "tsc && vite build --emptyOutDir && vite preview",
     "dev": "vite --open --port 3000",
     "build": "tsc && vite build --emptyOutDir",
     "preview": "vite preview",
     "lint:eslint": "eslint --fix ./src",
     "lint:prettier": "prettier --write ./src --ignore-unknown",
-    "lint:scss": "npx stylelint \"**/*.scss\" --fix"
+    "lint:scss": "npx stylelint \"**/*.scss\" --fix",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@eslint/js": "^9.6.0",
+    "@types/chai": "^5.0.1",
+    "@types/mocha": "^10.0.9",
     "@types/node": "^20.14.9",
+    "@types/sinon": "^17.0.3",
     "@types/uuid": "^10.0.0",
+    "chai": "^5.1.2",
     "eslint": "^9.6.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
     "globals": "^15.8.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "mocha": "^10.8.2",
     "prettier": "^3.3.2",
     "sass": "^1.77.6",
+    "sinon": "^19.0.2",
     "stylelint": "^16.8.1",
     "stylelint-config-standard": "^36.0.1",
     "stylelint-config-standard-scss": "^13.1.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.2.2",
     "typescript-eslint": "^7.15.0",
-    "vite": "^5.3.1"
+    "vite": "^5.3.1",
+    "jsdom": "^25.0.1"
   },
   "dependencies": {
     "@fontsource/plus-jakarta-sans": "^5.0.20",
@@ -39,5 +51,9 @@
   },
   "overrides": {
     "eslint": "^9.6.0"
+  },
+  "lint-staged": {
+    "*.(js|ts)": ["npm run lint:prettier", "npm run lint:eslint"],
+    "*.scss": ["npm run lint:scss"]
   }
 }
