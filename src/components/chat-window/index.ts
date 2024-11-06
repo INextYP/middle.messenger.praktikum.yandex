@@ -1,11 +1,10 @@
 import Block from '../../services/block'
 import { validator } from '../../services/valdator'
 import { ChatController } from '../../controllers/chat'
-
 import { ChatWindowKeys, ChatWindowProps } from './types'
-
-import chatWindowTemplate from './chat-window.html?raw'
 import { Chat } from '../../app/types'
+
+import { template } from './chat-window.hbs.ts'
 
 const chatController = new ChatController()
 
@@ -102,6 +101,6 @@ export class ChatWindow extends Block<ChatWindowProps, ChatWindowKeys> {
     }
 
     render() {
-        return this.compile(chatWindowTemplate, this.props)
+        return this.compile(template, this.props)
     }
 }

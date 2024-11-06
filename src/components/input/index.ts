@@ -1,7 +1,7 @@
 import Block from '../../services/block'
 import { InputKeys, InputProps } from './types'
 
-import inputTemplate from './input.html?raw'
+import { template } from './input.hbs.ts'
 
 export class Input extends Block<InputProps, InputKeys> {
     static name = 'Input'
@@ -43,6 +43,6 @@ export class Input extends Block<InputProps, InputKeys> {
     }
 
     render() {
-        return this.compile(inputTemplate, this.props)
+        return this.compile(template, this.props)
     }
 }

@@ -1,7 +1,7 @@
 import Block from '../../services/block'
 import { UserChatControlModalProps, UserChatControlModalKeys } from './types'
 
-import userChatControlModalTemplate from './user-chat-control-modal.html?raw'
+import { template } from './user-chat-control-modal.hbs.ts'
 
 export class UserChatControlModal extends Block<
     UserChatControlModalProps,
@@ -43,6 +43,6 @@ export class UserChatControlModal extends Block<
     }
 
     render() {
-        return this.compile(userChatControlModalTemplate, this.props)
+        return this.compile(template, this.props)
     }
 }

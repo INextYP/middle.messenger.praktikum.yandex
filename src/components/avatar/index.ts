@@ -1,7 +1,7 @@
 import Block from '../../services/block'
 import { AvatarProps } from './types'
 
-import avatarTemplate from './avatar.html?raw'
+import { template } from './avatar.hbs.ts'
 
 export class Avatar extends Block<AvatarProps> {
     static name = 'Avatar'
@@ -18,6 +18,6 @@ export class Avatar extends Block<AvatarProps> {
     }
 
     render() {
-        return this.compile(avatarTemplate, this.props)
+        return this.compile(template, this.props)
     }
 }

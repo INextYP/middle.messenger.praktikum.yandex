@@ -22,7 +22,7 @@ type HTTPMethod<OptionsType = Options, RequestType = unknown> = (
     options?: OptionsType,
 ) => Promise<RequestType>
 
-export class HTTPTransport {
+export default class HTTPTransport {
     private readonly baseUrl: string
 
     constructor(baseUrl = '') {

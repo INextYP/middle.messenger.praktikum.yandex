@@ -1,1 +1,3 @@
-export { default as fieldset } from './fieldset.html?raw'
+export const fieldset = `<fieldset class="fieldset">
+    {{> @partial-block }}
+</fieldset>`

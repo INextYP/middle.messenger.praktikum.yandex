@@ -1,6 +1,7 @@
 import Block from '../../services/block'
 import { ModalKeys, ModalProps } from './types'
-import modalTemplate from './modal.html?raw'
+
+import { template } from './modal.hbs.ts'
 
 export class Modal extends Block<ModalProps, ModalKeys> {
     static name = 'Modal'
@@ -38,6 +39,6 @@ export class Modal extends Block<ModalProps, ModalKeys> {
     }
 
     render() {
-        return this.compile(modalTemplate, this.props)
+        return this.compile(template, this.props)
     }
 }

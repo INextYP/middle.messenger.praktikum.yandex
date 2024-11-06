@@ -1,4 +1,4 @@
-{{#> modal }}
+export const template = `{{#> modal }}
     {{#> form key="form" extraClass="modalForm" }}
         <input key="file_input" type='file' name='filename'/>
         {{{ ErrorText key="errorText" errorText=errorText }}}
@@ -6,3 +6,4 @@
     {{/form }}
     <button key="close_button" class="modal-close-button">&times;</button>
 {{/modal }}
+`

@@ -1,7 +1,7 @@
 import Block from '../../services/block'
 import { LinkProps } from './types'
 
-import linkTemplate from './link.html?raw'
+import { template } from './link.hbs.ts'
 
 export class Link extends Block<LinkProps> {
     static name = 'Link'
@@ -18,6 +18,6 @@ export class Link extends Block<LinkProps> {
     }
 
     render() {
-        return this.compile(linkTemplate, this.props)
+        return this.compile(template, this.props)
     }
 }

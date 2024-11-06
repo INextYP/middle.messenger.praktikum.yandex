@@ -1,7 +1,7 @@
+import Block from '../../services/block'
 import { ButtonProps } from './types'
 
-import buttonTemplate from './button.html?raw'
-import Block from '../../services/block'
+import { template } from './button.hbs.ts'
 
 export class Button extends Block<ButtonProps> {
     static name = 'Button'
@@ -18,6 +18,6 @@ export class Button extends Block<ButtonProps> {
     }
 
     render() {
-        return this.compile(buttonTemplate, this.props)
+        return this.compile(template, this.props)
     }
 }

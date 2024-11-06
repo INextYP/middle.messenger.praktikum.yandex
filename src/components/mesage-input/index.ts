@@ -1,7 +1,7 @@
 import Block from '../../services/block'
 import { MessageInputProps, MessageInputKeys } from './types'
 
-import messageInputTemplate from './message-input.html?raw'
+import { template } from './message-input.hbs.ts'
 
 export class MessageInput extends Block<MessageInputProps, MessageInputKeys> {
     static name = 'MessageInput'
@@ -48,6 +48,6 @@ export class MessageInput extends Block<MessageInputProps, MessageInputKeys> {
     }
 
     render() {
-        return this.compile(messageInputTemplate, this.props)
+        return this.compile(template, this.props)
     }
 }
